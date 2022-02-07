@@ -50,4 +50,24 @@ const deleteFilm = (filmName) => {
         console.log("Такого фильма не существует!");
     }
 };
+const listFilms = () => {
+    let sum;
+    let userRatings;
+    let oneUserRating;
+    for (let i = 0; i < movies.length; i++) {
+        let checkRatings = Object.keys(movies[i].ratings);
+        if (checkRatings.length !== 0) {
+            sum = 0;
+            userRatings = Object.values(movies[i].ratings);
+            for (let i = 0; i < userRatings.length; i++) {
+                oneUserRating = userRatings[i];
+                sum += oneUserRating;
+            }
+            console.log("====================\nНазвание фильма: " + movies[i].name + "\nСредние оценки фильма: " + sum / 2 + "\n====================");
+        }
+        else {
+            console.log("====================\nНазвание фильма: " + movies[i].name + "\nЭтот фильм еще не оценивался\n====================");
+        }
+    }
+};
 //# sourceMappingURL=main.js.map
