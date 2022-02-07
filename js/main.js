@@ -128,7 +128,51 @@ const findFilm = (filmName) => {
         console.log("Этого фильма нету в списке!");
     }
 };
-rateFilm('Avengers: Infinity War');
-findFilm('Avengers: Infinity War');
-listFilms();
+let userChoise;
+let userFilm;
+while (true) {
+    userChoise = prompt("Выберите действие:\nadd - добавить фильм с указанным названием\ndelete - удалить фильм с указанным названием.\nlist - вывести список фильмов в виде таблицы\nrate - добавить оценку к фильму по названию.\nfind - найти фильм по названию и показать его название и все оценки в виде таблицы");
+    if (userChoise === null) {
+        console.log("Выход из программы");
+        break;
+    }
+    if (userChoise === "add") {
+        userFilm = prompt("Введите название фильма");
+        if (userFilm === null) {
+            console.log("Выход из программы");
+            break;
+        }
+        addFilm(userFilm);
+    }
+    else if (userChoise === "delete") {
+        userFilm = prompt("Введите название фильма");
+        if (userFilm === null) {
+            console.log("Выход из программы");
+            break;
+        }
+        deleteFilm(userFilm);
+    }
+    else if (userChoise === "list") {
+        listFilms();
+    }
+    else if (userChoise === "rate") {
+        userFilm = prompt("Введите название фильма");
+        if (userFilm === null) {
+            console.log("Выход из программы");
+            break;
+        }
+        rateFilm(userFilm);
+    }
+    else if (userChoise === "find") {
+        userFilm = prompt("Введите название фильма");
+        if (userFilm === null) {
+            console.log("Выход из программы");
+            break;
+        }
+        findFilm(userFilm);
+    }
+    else {
+        console.log("Напишите нужную команду!");
+    }
+}
 //# sourceMappingURL=main.js.map
