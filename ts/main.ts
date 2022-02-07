@@ -21,3 +21,17 @@ const movies: Movie[] = [
   }
 }
 ]
+
+const findNameFilm = (string:string):boolean => {
+  let isThereOrNot: boolean = false;
+  for (let i = 0; i < movies.length; i++) {
+    string = string.toLowerCase();
+    let filmName:string = (movies[i].name);
+    filmName = filmName.toLowerCase()
+    if (string === filmName) {
+      isThereOrNot = true;
+      break;
+    }
+  }
+  return isThereOrNot;
+};

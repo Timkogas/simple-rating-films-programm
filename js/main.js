@@ -15,4 +15,17 @@ const movies = [
         }
     }
 ];
+const findNameFilm = (string) => {
+    let isThereOrNot = false;
+    for (let i = 0; i < movies.length; i++) {
+        string = string.toLowerCase();
+        let filmName = (movies[i].name);
+        filmName = filmName.toLowerCase();
+        if (string === filmName) {
+            isThereOrNot = true;
+            break;
+        }
+    }
+    return isThereOrNot;
+};
 //# sourceMappingURL=main.js.map
