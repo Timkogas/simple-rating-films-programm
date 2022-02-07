@@ -63,7 +63,7 @@ const listFilms = () => {
                 oneUserRating = userRatings[i];
                 sum += oneUserRating;
             }
-            console.log("====================\nНазвание фильма: " + movies[i].name + "\nСредние оценки фильма: " + sum / 2 + "\n====================");
+            console.log("====================\nНазвание фильма: " + movies[i].name + "\nСредние оценки фильма: " + (sum / checkRatings.length).toFixed(1) + "\n====================");
         }
         else {
             console.log("====================\nНазвание фильма: " + movies[i].name + "\nЭтот фильм еще не оценивался\n====================");
@@ -100,4 +100,35 @@ const rateFilm = (filmName) => {
         break;
     }
 };
+const findFilm = (filmName) => {
+    let check = findNameFilm(filmName);
+    if (check !== -1) {
+        let sum;
+        let userRatings;
+        let oneUserRating;
+        let oneUserName;
+        let checkRatings = Object.keys(movies[check].ratings);
+        if (checkRatings.length !== 0) {
+            sum = 0;
+            userRatings = Object.values(movies[check].ratings);
+            console.log("====================\nНазвание фильма: " + movies[check].name);
+            for (let i = 0; i < userRatings.length; i++) {
+                oneUserRating = userRatings[i];
+                oneUserName = checkRatings[i];
+                sum += oneUserRating;
+                console.log("Оценка пользователя " + oneUserName + " : " + oneUserRating);
+            }
+            console.log("Средняя оценка пользователей: " + (sum / checkRatings.length).toFixed(1) + "\n====================");
+        }
+        else {
+            console.log("====================\nНазвание фильма: " + movies[check].name + "\nЭтот фильм еще не оценивался\n====================");
+        }
+    }
+    else {
+        console.log("Этого фильма нету в списке!");
+    }
+};
+rateFilm('Avengers: Infinity War');
+findFilm('Avengers: Infinity War');
+listFilms();
 //# sourceMappingURL=main.js.map
