@@ -70,4 +70,34 @@ const listFilms = () => {
         }
     }
 };
+const rateFilm = (filmName) => {
+    while (true) {
+        let check = findNameFilm(filmName);
+        if (check !== -1) {
+            let userName = prompt("Введите ваше имя:");
+            if (userName === null) {
+                break;
+            }
+            while (true) {
+                let userRate = prompt("Введите вашу оценку от 0 до 10");
+                if (userRate === null) {
+                    break;
+                }
+                let userRateNumber = parseInt(userRate);
+                if (userRateNumber >= 0 || userRateNumber <= 10) {
+                    movies[check].ratings[userName] = userRateNumber;
+                    break;
+                }
+                else {
+                    console.log("Введите число от 0 до 10, пожалуйста");
+                }
+            }
+        }
+        else {
+            console.log("Этого фильма нету в списке");
+            break;
+        }
+        break;
+    }
+};
 //# sourceMappingURL=main.js.map

@@ -71,10 +71,40 @@ const listFilms = ():void => {
         oneUserRating = userRatings[i];
         sum += oneUserRating;
       }
-      console.log("====================\nНазвание фильма: " + movies[i].name + "\nСредние оценки фильма: " + sum/2 + "\n====================")
+      console.log("====================\nНазвание фильма: " + movies[i].name + "\nСредние оценки фильма: " + sum/2 + "\n====================");
     } else {
-    console.log("====================\nНазвание фильма: " + movies[i].name + "\nЭтот фильм еще не оценивался\n====================")
+    console.log("====================\nНазвание фильма: " + movies[i].name + "\nЭтот фильм еще не оценивался\n====================");
     }
   }
 }
+
+const rateFilm = (filmName:string):void => {
+  while (true) {
+    let check: number = findNameFilm(filmName);
+    if (check !== -1) {
+      let userName: string | null = prompt("Введите ваше имя:");
+      if (userName === null) {
+        break;
+      }
+      while (true) {
+        let userRate: string | null = prompt("Введите вашу оценку от 0 до 10");
+        if (userRate === null) {
+          break;
+        }
+        let userRateNumber:number = parseInt(userRate);
+        if (userRateNumber >= 0 || userRateNumber <= 10 ) {
+          movies[check].ratings[userName] = userRateNumber;
+          break; 
+        } else {
+         console.log("Введите число от 0 до 10, пожалуйста"); 
+        }
+      }
+    } else {
+      console.log("Этого фильма нету в списке");
+      break;
+    }
+    break;
+  }
+}
+
 
