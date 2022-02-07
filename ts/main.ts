@@ -22,16 +22,31 @@ const movies: Movie[] = [
 }
 ]
 
-const findNameFilm = (string:string):boolean => {
+const findNameFilm = (filmNameToFind:string):boolean => {
   let isThereOrNot: boolean = false;
   for (let i = 0; i < movies.length; i++) {
-    string = string.toLowerCase();
-    let filmName:string = (movies[i].name);
-    filmName = filmName.toLowerCase()
-    if (string === filmName) {
+    filmNameToFind = filmNameToFind.toLowerCase();
+    let filmNameInArray:string = (movies[i].name);
+    filmNameInArray = filmNameInArray.toLowerCase()
+    if (filmNameToFind === filmNameInArray) {
       isThereOrNot = true;
       break;
     }
   }
   return isThereOrNot;
 };
+
+const addFilm = (filmName:string):void => {
+  let check:boolean = findNameFilm(filmName);
+  if (!check) {
+    let MovieObj:Movie = {
+      'name': filmName,
+      'ratings': {}
+    }
+    movies.push(MovieObj);
+  } else {
+    console.log("Фильм с таким названием уже есть!");
+  }
+};
+
+  

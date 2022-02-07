@@ -15,17 +15,30 @@ const movies = [
         }
     }
 ];
-const findNameFilm = (string) => {
+const findNameFilm = (filmNameToFind) => {
     let isThereOrNot = false;
     for (let i = 0; i < movies.length; i++) {
-        string = string.toLowerCase();
-        let filmName = (movies[i].name);
-        filmName = filmName.toLowerCase();
-        if (string === filmName) {
+        filmNameToFind = filmNameToFind.toLowerCase();
+        let filmNameInArray = (movies[i].name);
+        filmNameInArray = filmNameInArray.toLowerCase();
+        if (filmNameToFind === filmNameInArray) {
             isThereOrNot = true;
             break;
         }
     }
     return isThereOrNot;
+};
+const addFilm = (filmName) => {
+    let check = findNameFilm(filmName);
+    if (!check) {
+        let MovieObj = {
+            'name': filmName,
+            'ratings': {}
+        };
+        movies.push(MovieObj);
+    }
+    else {
+        console.log("Фильм с таким названием уже есть!");
+    }
 };
 //# sourceMappingURL=main.js.map
