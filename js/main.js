@@ -16,13 +16,13 @@ const movies = [
     }
 ];
 const findNameFilm = (filmNameToFind) => {
-    let isThereOrNot = false;
+    let isThereOrNot = -1;
     for (let i = 0; i < movies.length; i++) {
         filmNameToFind = filmNameToFind.toLowerCase();
         let filmNameInArray = (movies[i].name);
         filmNameInArray = filmNameInArray.toLowerCase();
         if (filmNameToFind === filmNameInArray) {
-            isThereOrNot = true;
+            isThereOrNot = i;
             break;
         }
     }
@@ -30,7 +30,7 @@ const findNameFilm = (filmNameToFind) => {
 };
 const addFilm = (filmName) => {
     let check = findNameFilm(filmName);
-    if (!check) {
+    if (check === -1) {
         let MovieObj = {
             'name': filmName,
             'ratings': {}
@@ -39,6 +39,15 @@ const addFilm = (filmName) => {
     }
     else {
         console.log("Фильм с таким названием уже есть!");
+    }
+};
+const deleteFilm = (filmName) => {
+    let check = findNameFilm(filmName);
+    if (check !== -1) {
+        movies.splice(check, 1);
+    }
+    else {
+        console.log("Такого фильма не существует!");
     }
 };
 //# sourceMappingURL=main.js.map
